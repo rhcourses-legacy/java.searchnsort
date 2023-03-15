@@ -5,7 +5,7 @@ import java.util.List;
 /** Search ist eine Klasse, die mehrere statische Funktionen für die Suche
  *  nach Elementen in einer Liste enthält.
  */
-public class Search {
+public class SearchImproved {
 
     /** linear führt eine lineare Suche nach einem Element in einer Liste durch.
      * 
@@ -38,11 +38,12 @@ public class Search {
         }
         int midpos = list.size() / 2;
 
-        if (list.get(midpos) == key) {
-            return midpos;
-        }
         if (key <= list.get(midpos)) {
-            return binary(list.subList(0, midpos), key);
+            int result = binary(list.subList(0, midpos), key);
+            if (result != -1) {
+                return result;
+            }
+            return list.get(midpos) == key ? midpos : -1;
         }
         int result = binary(list.subList(midpos+1, list.size()), key);
         return result == -1 ? -1 : result + midpos + 1;
