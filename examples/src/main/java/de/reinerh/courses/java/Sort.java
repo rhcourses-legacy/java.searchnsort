@@ -1,5 +1,6 @@
 package de.reinerh.courses.java;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -44,7 +45,38 @@ public class Sort {
 
     /** Implementierung des Sortierverfahrens QuickSort. */
     public static void quick(List<Integer> list) {
+        // Rekursionsanker: Listen der Länge <= 1 sind bereits sortiert.
+        if (list.size() <= 1) {
+            return;
+        }
 
+        // Vorbereitung: Erzeugen von zwei Teillisten,
+        // die kleinere bzw. größere Elemente als das erste enthalten.
+        int pivot = list.get(0);
+        List<Integer> left = new ArrayList<>();
+        List<Integer> right = new ArrayList<>();
+
+        for (var el : list.subList(1, list.size())) {
+            if (el < pivot) {
+                left.add(el);
+            } else {
+                right.add(el);
+            }
+        }
+
+        // Rekursiv sortieren.
+        quick(left);
+        quick(right);
+
+        // Die sortierten Teillisten wieder zusammensetzen.
+        int i = 0;
+        for (var el : left) {
+            list.set(i++, el);
+        } 
+        list.set(i++, pivot);
+        for (var el : right) {
+            list.set(i++, el);
+        } 
     }
 
     /** Implementierung des Sortierverfahrens MergeSort. */
