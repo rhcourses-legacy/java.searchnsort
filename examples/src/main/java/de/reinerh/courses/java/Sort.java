@@ -20,7 +20,15 @@ public class Sort {
 
     /** Implementierung des Sortierverfahrens SelectionSort. */
     public static void selection(List<Integer> list) {
-
+        for (int i=0; i<list.size()-1; i++) {
+            int smallestPos = -1;
+            for (int j=i; j<list.size(); j++) {
+                if (smallestPos < 0 || list.get(j) < list.get(smallestPos)) {
+                    smallestPos = j;
+                }
+            }
+            Collections.swap(list, i, smallestPos);
+        }
     }
 
     /** Implementierung des Sortierverfahrens BubbleSort. */

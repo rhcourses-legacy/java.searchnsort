@@ -33,4 +33,21 @@ public class SortTest {
         // Wenn man keine Kopie braucht, bietet die Standardbibliothek mit List.sort()
         // und Collections.sort() noch weitere Möglichkeiten an.
     }
+
+    /**
+     * Test für Selection Sort.
+     */
+    @Test
+    public void testSelectionSort()
+    {
+        // Gegeben: Eine Liste von int und eine sortierte Form davon.
+        List<Integer> l1 = Arrays.asList(1,5,6,10,3,25,8,42,25,103);
+        List<Integer> l1sorted = l1.stream().sorted().toList();
+        
+        // Wenn wir die Liste sortieren ...
+        Sort.selection(l1);
+
+        // ... soll sie anschließend eine sortierte Form ihrer selbst sein.
+        assertEquals(l1sorted, l1);
+    }
 }
