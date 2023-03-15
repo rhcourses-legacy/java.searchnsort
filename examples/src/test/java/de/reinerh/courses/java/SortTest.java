@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 public class SortTest {
     /**
-     * Test für InsertionSort.
+     * Test für Insertion Sort.
      */
     @Test
     public void testInsertionSort()
@@ -22,7 +22,7 @@ public class SortTest {
         Sort.insertion(l1);
 
         // ... soll sie anschließend eine sortierte Form ihrer selbst sein.
-        assertEquals(l1sorted,l1);
+        assertEquals(l1sorted, l1);
 
         // Anmerkung: 
         // Wir prüfen hier, ob unsere Sortierfunktion die gleiche Wirkung hat,
