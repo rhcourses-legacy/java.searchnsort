@@ -15,6 +15,11 @@ public class Search {
      *         Oder -1, falls key nicht vorkommt.
      */
     public static int linear(List<Integer> list, int key) {
+        for (int i = 0; i<list.size(); i++) {
+            if (list.get(i) == key) {
+                return i;
+            }
+        }
         return -1;
     }
 
