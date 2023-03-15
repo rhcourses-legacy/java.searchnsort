@@ -81,6 +81,47 @@ public class Sort {
 
     /** Implementierung des Sortierverfahrens MergeSort. */
     public static void merge(List<Integer> list) {
+        // Rekursionsanker: Listen der Länge <= 1 sind bereits sortiert.
+        if (list.size() <= 1) {
+            return;
+        }
 
+        // Liste in zwei Hälften zerlegen.
+        int midpos = list.size() / 2;
+        var left = list.subList(0, midpos);
+        var right = list.subList(midpos, list.size());
+
+        // Die beiden Hälften rekursiv sortieren.
+        merge(left);
+        merge(right);
+
+        // Die sortierten Teillisten zusammenmischen.
+        List<Integer> sortedList = new ArrayList<>();
+        int leftpos = 0;
+        int rightpos = 0;
+        while (leftpos < left.size() && rightpos < right.size()) {
+            var leftElement = left.get(leftpos);
+            var rightElement = right.get(rightpos);
+            if (leftElement < rightElement) {
+                sortedList.add(leftElement);
+                leftpos++;
+            } else {
+                sortedList.add(rightElement);
+                rightpos++;
+            }
+        }
+        for (int i=leftpos; i<left.size(); i++) {
+            sortedList.add(left.get(i));
+        }
+        for (int i=rightpos; i<right.size(); i++) {
+            sortedList.add(right.get(i));
+        }
+
+        // Für's Zusammenmischen haben wir eine Hilfsliste verwendet,
+        // weil wir left und right mit List.subList() erzeugt hatten und dies keine
+        // echten Kopien sind. Hätten wir direkt List verwendet worden, hätte das die
+        // Teillisten mit verändert.
+        // Diese Hilfsliste kopieren wir nun zurück in die Haupt-Liste.
+        Collections.copy(list, sortedList);
     }
 }

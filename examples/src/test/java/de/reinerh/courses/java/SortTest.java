@@ -84,4 +84,21 @@ public class SortTest {
         // ... soll sie anschließend eine sortierte Form ihrer selbst sein.
         assertEquals(l1sorted, l1);
     }
+
+    /**
+     * Test für Merge Sort.
+     */
+    @Test
+    public void testMergeSort()
+    {
+        // Gegeben: Eine Liste von int und eine sortierte Form davon.
+        List<Integer> l1 = Arrays.asList(1,5,6,10,3,25,8,42,25,103);
+        List<Integer> l1sorted = l1.stream().sorted().toList();
+        
+        // Wenn wir die Liste sortieren ...
+        Sort.merge(l1);
+
+        // ... soll sie anschließend eine sortierte Form ihrer selbst sein.
+        assertEquals(l1sorted, l1);
+    }
 }
