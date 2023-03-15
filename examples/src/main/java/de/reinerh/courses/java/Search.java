@@ -33,6 +33,19 @@ public class Search {
      * Anmerkung: Diese Funktion kann nur für sortierte Listen ein sinnvolles Ergebnis liefern.
      */
     public static int binary(List<Integer> list, int key) {
-        return -1;
+        if (list.isEmpty()) {
+            return -1;
+        }
+        int midpos = list.size() / 2;
+
+        if (key <= list.get(midpos)) {
+            int result = binary(list.subList(0, midpos), key);
+            if (result != -1) {
+                return result;
+            }
+            return list.get(midpos) == key ? midpos : -1;
+        }
+        int result = binary(list.subList(midpos+1, list.size()), key);
+        return result == -1 ? -1 : result + midpos + 1;
     }
 }
