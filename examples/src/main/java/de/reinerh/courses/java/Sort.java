@@ -1,5 +1,6 @@
 package de.reinerh.courses.java;
 
+import java.util.Collections;
 import java.util.List;
 
 /** Sort ist eine Klasse, die mehrere statische Funktionen
@@ -9,6 +10,11 @@ public class Sort {
 
     /** Implementierung des Sortierverfahrens InsertionSort. */
     public static void insertion(List<Integer> list) {
+        for (int i=1; i < list.size(); i++) {
+            for (int j = i; j>0 && list.get(j) < list.get(j-1); j--) {
+                Collections.swap(list, j, j-1);
+            }
+        }
 
     }
 
