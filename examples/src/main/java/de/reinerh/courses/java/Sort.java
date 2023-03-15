@@ -2,6 +2,9 @@ package de.reinerh.courses.java;
 
 import java.util.List;
 
+/** Sort ist eine Klasse, die mehrere statische Funktionen
+ *  für das Sortieren von Listen enthält.
+ */
 public class Sort {
 
     /** Implementierung des Sortierverfahrens InsertionSort. */
