@@ -33,7 +33,13 @@ public class Sort {
 
     /** Implementierung des Sortierverfahrens BubbleSort. */
     public static void bubble(List<Integer> list) {
-
+        for (int i=0; i<list.size(); i++) {
+            for (int j=0; j<i; j++) {
+                if (list.get(j) > list.get(j+1)) {
+                    Collections.swap(list, j, j+1);
+                }
+            }
+        }
     }
 
     /** Implementierung des Sortierverfahrens QuickSort. */
