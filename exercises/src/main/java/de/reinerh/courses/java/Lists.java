@@ -61,4 +61,20 @@ public class Lists {
 
         return left;
     }
+
+    public static void qsort(List<Integer> list) {
+        // Rekursionsanker: Listen der Länge <= 1 sind bereits sortiert.
+        if (list.size() <= 1) {
+            return;
+        }
+        
+        // Liste nach pivot partitionieren und das Pivotelement in die Mitte tauschen.
+        int pivot = list.get(0);
+        int pivotpos = partition(list.subList(1, list.size()), pivot);
+        Collections.swap(list,0,pivotpos);
+
+        // Rekursiv sortieren.
+        qsort(list.subList(0, pivotpos));
+        qsort(list.subList(pivotpos+1, list.size()));
+    }
 }
