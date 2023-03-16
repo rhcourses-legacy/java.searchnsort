@@ -2,6 +2,7 @@ package de.reinerh.courses.java;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
 import java.util.List;
@@ -45,5 +46,29 @@ public class ListsTest
 
         // ... then we expect the search to return -1.
         assertEquals( -1, pos38 );
+    }
+
+    /**
+     * Test für die binäre Suche.
+     */
+    @Test
+    public void testPartition()
+    {
+        // Gegeben eine Liste von Zahlen.
+        List<Integer> l1 = Arrays.asList(42,15,77,23,12,14,85,15,103,42,38);
+        
+        // Wenn wir die Liste nach 45 partitionieren...
+        int resultl1 = Lists.partition(l1,45);
+
+        // .. sollte die Funktion 8 geliefert haben.
+        assertEquals(8, resultl1);
+
+        // .. sollten ab Stelle 8 nur noch Werte > 45 stehen und vorher nur kleinere.
+        for (int i=0; i<8; i++) {
+            assertTrue(l1.get(i) <= 45);
+        }
+        for (int i=8; i<l1.size(); i++) {
+            assertTrue(l1.get(i) > 45);
+        }
     }
 }

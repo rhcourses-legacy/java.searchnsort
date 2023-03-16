@@ -1,5 +1,6 @@
 package de.reinerh.courses.java;
 
+import java.util.Collections;
 import java.util.List;
 
 /** Search ist eine Klasse, die mehrere statische Funktionen für die Suche
@@ -31,5 +32,33 @@ public class Lists {
         }
         int result = binarySearch(list.subList(midpos+1, list.size()), key);
         return result == -1 ? -1 : result + midpos + 1;
+    }
+
+    /**
+     * 
+     * * `partition` sortiert die Elemente einer Liste so um, dass zuerst alle Elemente
+     * kommen, die kleiner als n sind und danach alle Elemente, die größer sind.
+     * 
+     * @param list Die umzusortierende Liste
+     * @param n Der Wert, nach dem umsortiert werden soll.
+     * @return Die Anzahl der Elemente, die <= n sind.
+     */
+    public static int partition(List<Integer> list, int n) {
+        int left = 0;
+        int right = list.size()-1;
+
+        while (left <= right) {
+            int leftValue = list.get(left);
+            int rightValue = list.get(right);
+
+            if (leftValue > n && rightValue <= n) {
+                Collections.swap(list, left, right);
+            }
+
+            if (leftValue <= n) { left++; }
+            if (rightValue > n) { right--; }
+        }
+
+        return left;
     }
 }
